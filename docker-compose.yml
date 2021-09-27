@@ -1,0 +1,34 @@
+version: '3'
+services:
+  odoo:
+    build: .
+    container_name: odoo-boilerplate-odoo
+    depends_on:
+      - db
+    ports:
+      - 8069:8069
+    volumes:
+      - odoo-boilerplate-web-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./odoo-shf-addons:/mnt/odoo-shf-addons
+    networks:
+      - database
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_USER: odoo
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-boilerplate-db-data:/var/lib/postgresql/data/pgdata
+    networks:
+      - database
+
+volumes:
+  odoo-boilerplate-web-data:
+  odoo-boilerplate-db-data:
+
+networks:
+  database:
+    driver: bridge
