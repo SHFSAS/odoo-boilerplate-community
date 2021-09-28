@@ -2,6 +2,7 @@ version: '3'
 services:
   odoo:
     build: .
+    command: odoo -d start -i base
     depends_on:
       - db
     ports:
