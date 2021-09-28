@@ -2,11 +2,10 @@ version: '3'
 services:
   odoo:
     build: .
-    container_name: odoo-boilerplate-odoo
     depends_on:
       - db
     ports:
-      - 8069:8069
+      - 8069
     volumes:
       - odoo-boilerplate-web-data:/var/lib/odoo
       - ./config:/etc/odoo
