@@ -9,6 +9,13 @@ RUN pip3 install boto3
 RUN pip3 install numpy
 RUN pip3 install pandas
 
+# Soporte para facturacion electronica
+RUN pip3 install pyopenssl
+RUN pip3 install requests
+RUN pip3 install xmltodict
+RUN pip3 install PyQRCode
+RUN pip3 install pypng
+
 # Locale spanish
 RUN apt-get update && \
     apt-get install -y locales && \
